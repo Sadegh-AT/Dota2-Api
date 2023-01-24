@@ -88,11 +88,22 @@ button:hover {
 }
 .type {
   position: absolute;
-  top: -25px;
-  left: -25px;
+  top: -15px;
+  left: -15px;
   background-color: #1a1b26;
   border-radius: 50%;
-  padding: 0.5rem;
+  padding: 0.3rem;
+  width: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.type .type-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .hero-card .image {
   max-width: 355px;
