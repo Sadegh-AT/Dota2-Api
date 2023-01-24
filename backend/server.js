@@ -22,7 +22,7 @@ function getHero(name) {
       id: hero[0].id,
       name: hero[0].localized_name,
       type: hero[0].primary_attr,
-      img: hero[0].img,
+      img: "https://api.opendota.com" + hero[0].img,
       health: hero[0].base_health,
       mana: hero[0].base_mana,
     };
