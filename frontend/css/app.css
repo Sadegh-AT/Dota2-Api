@@ -68,13 +68,32 @@ button {
   font-size: 1rem;
   color: #16161e;
   font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 85px;
+  min-height: 28px;
+  transition: all 0.2s ease-in-out;
+}
+button:disabled {
+  background-color: rgb(18, 196, 86);
+}
+button:disabled:hover {
+  background-color: rgb(18, 196, 86);
+
+  cursor: default;
 }
 
 button:hover {
   background-color: rgb(91, 243, 149);
   cursor: pointer;
 }
-
+.btn-text {
+  display: none;
+}
+.btn-text.active {
+  display: block;
+}
 .hero-card {
   /* border: 1px oldlace solid; */
   border-radius: 0.5rem;
@@ -168,4 +187,45 @@ button:hover {
     rgba(113, 242, 254, 1) 100%
   );
   border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.lds-ring {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+.lds-ring.active {
+  display: flex;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 8px;
+  border: 1.5px solid #dfc;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #dfc transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

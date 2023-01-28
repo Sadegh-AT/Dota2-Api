@@ -6,15 +6,19 @@ const image = document.querySelector(".image img");
 const healthCount = document.querySelector(".health-count");
 const manaCount = document.querySelector(".mana-count");
 const container = document.querySelector(".container");
-
+const btn = document.querySelector("button");
 let myData;
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   fetch(`http://localhost:2000/api/dota2-hero?name=${input.value}`)
     .then((response) => response.json())
     .then((data) => {
       if (data != "Null") {
-        SetTextAndImage(data);
+        CreatElemet(data);
+        btn.disabled = true;
+        btn.children[0].classList.remove("active");
+        btn.children[1].classList.add("active");
       } else {
         errorStyle(input);
       }
@@ -31,7 +35,7 @@ function getType(type) {
   }
 }
 
-function SetTextAndImage(data) {
+function CreatElemet(data) {
   const card = document.querySelector(".hero-card");
   if (card) {
     card.remove();
@@ -63,4 +67,8 @@ input.addEventListener("input", function () {
 });
 function errorStyle(input) {
   input.classList.add("error");
+}
+
+function Code() {
+  console.log("asdasd");
 }
