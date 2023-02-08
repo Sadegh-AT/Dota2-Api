@@ -11,16 +11,21 @@ let myData;
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+  addLoader();
   fetch(`http://localhost:2000/api/dota2-hero?name=${input.value}`)
     .then((response) => response.json())
     .then((data) => {
       if (data != "Null") {
         CreatElemet(data);
-        btn.disabled = true;
-        btn.children[0].classList.remove("active");
-        btn.children[1].classList.add("active");
+        const heroCardImg = document.querySelector(".hero-card .image img");
+        const heroCard = document.querySelector(".hero-card");
+        heroCardImg.addEventListener("load", function () {
+          removeLoader();
+          heroCard.classList.add("show");
+        });
       } else {
         errorStyle(input);
+        removeLoader();
       }
     });
 });
@@ -69,6 +74,13 @@ function errorStyle(input) {
   input.classList.add("error");
 }
 
-function Code() {
-  console.log("asdasd");
+function addLoader() {
+  btn.disabled = true;
+  btn.children[0].classList.remove("active");
+  btn.children[1].classList.add("active");
+}
+function removeLoader() {
+  btn.disabled = false;
+  btn.children[0].classList.add("active");
+  btn.children[1].classList.remove("active");
 }

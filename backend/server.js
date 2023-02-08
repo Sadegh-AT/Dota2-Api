@@ -7,6 +7,7 @@ const server = http.createServer((req, res) => {
 
   if (req.method == "GET" && pathUrl.pathname === "/api/dota2-hero") {
     res.setHeader("Access-Control-Allow-Origin", "*");
+
     res.end(JSON.stringify(getHero(pathUrl.query.name)));
   } else {
     res.end("404");
