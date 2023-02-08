@@ -12,7 +12,9 @@ let myData;
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   addLoader();
-  fetch(`http://localhost:2000/api/dota2-hero?name=${input.value}`)
+  let inputValue = input.value;
+  inputValue = capitalizeFirstLetter(inputValue);
+  fetch(`http://localhost:2000/api/dota2-hero?name=${inputValue}`)
     .then((response) => response.json())
     .then((data) => {
       if (data != "Null") {
@@ -84,3 +86,14 @@ function removeLoader() {
   btn.children[0].classList.add("active");
   btn.children[1].classList.remove("active");
 }
+
+function capitalizeFirstLetter(str) {
+  str = str.trim();
+  if (str != "") {
+    str = str.toLowerCase();
+    return str[0].toUpperCase() + str.slice(1);
+  } else {
+    return "Null";
+  }
+}
+console.log();
